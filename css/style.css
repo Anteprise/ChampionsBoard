@@ -58,13 +58,14 @@ header {
 .nabla-heading {
     font-family: "Nabla", system-ui;
     /*font-optical-sizing: auto;*/
-    font-weight: 600;
+    font-weight: 400;
     font-style: normal;
     font-variation-settings:
       "EDPT" 100,
       "EHLT" 12;
     text-align: center;
     padding: 10px 0 0 0;
+    color: rgb(199, 174, 31);;
   }
 
 .champion-board-links {
