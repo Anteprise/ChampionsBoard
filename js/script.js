@@ -1,5 +1,17 @@
 //console.log("Pretty Mary");
 
+/* Champion details */
+
+const uBolt = new champDetail("Athletics", "Usain", "Bolt", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+const nLyles = new champDetail("Athletics", "Noah", "Lyles", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+const gHolloway = new champDetail("Athletics", "Grant", "Holloway", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+const lJames = new champDetail("Basketball", "Lebron", "James", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+const mJordan = new champDetail("Basketball", "Michael", "Jordan", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+const kAbdulJabbar = new champDetail("Basketball", "Kareem", "Abdul-Jabbar", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+const mPhelps = new champDetail("Swimming", "Michael", "Phelps", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+const mSpitz = new champDetail("Swimming", "Mark", "Spitz", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+const iThorpe = new champDetail("Swimming", "Ian", "Thorpe", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+
 // Dropdown control //
 
 /* Function to determine which sport is selected & display champion dropdown with matching champions*/
@@ -69,6 +81,167 @@ document.getElementById("select-champion").onchange = function() {
 
 }
 
+/* Show Champions on Display Board */
+
+let champOnBoard = "";
+let champSport = "";
+let grow = true;
+let posTop = "50px";
+let posLeft = "-50px";
+let selection = false;
+console.log(championSelected);
+
+window.addEventListener("load", (event) => {
+
+    champOnBoard = uBolt.fullName();
+    champSport = uBolt.sportName;
+    document.getElementById("champion-name").innerHTML = champOnBoard;
+    document.getElementById("champion-sport").innerHTML = champSport;
+    fontControl();
+
+  });
+
+   
+
+  function fontControl () {
+
+    if (championSelected === "") {
+
+    /* while (!selection) { */
+
+    document.getElementById("champion-name").innerHTML = champOnBoard;
+    document.getElementById("champion-sport").innerHTML = champSport;
+
+    fontS = document.getElementById("champion-name-sport").style.fontSize;
+    modSize = parseInt(fontS);
+    document.getElementById("champion-name-sport").style.top = posTop;
+    //modTop = parseInt(posTop);
+    document.getElementById("champion-name-sport").style.left = posLeft;
+    //modLeft = parseInt(posLeft);
+    window.setTimeout(txtGrow, 500, modSize);
+
+    console.log(selection);
+    //console.log(modLeft);
+
+/* } */
+    } else {
+        document.getElementById("champion-name").innerHTML = champOnBoard;
+        document.getElementById("champion-sport").innerHTML = champSport;
+        document.getElementById("champion-name-sport").style.fontSize = "60pt";
+    }
+
+  }
+
+
+  function txtGrow (fsStore) {
+
+    console.log(fsStore);
+
+    if (grow) {
+        fsStore = fsStore + 1;
+        if (fsStore <= 60) {
+            document.getElementById("champion-name-sport").style.fontSize = fsStore + "pt";
+        }
+        else {
+            grow = false;
+        }
+    } else {
+        fsStore = fsStore - 1;
+        if (fsStore < 1) {
+            changeChamp();
+            return;
+        }
+            
+        document.getElementById("champion-name-sport").style.fontSize = fsStore + "pt";
+    }
+
+    window.setTimeout(txtGrow, 20, fsStore);
+
+  }
+
+  function changeChamp () {
+
+    randomChamp = Math.floor(Math.random() * 9);
+
+    console.log(randomChamp);
+
+    switch (randomChamp) {
+        case 0:
+            champOnBoard = uBolt.fullName();
+            champSport = uBolt.sportName;
+            posTop = "100px";
+            posLeft = "100px";
+            grow = true;
+            fontControl ();
+        break;
+        case 1:
+            champOnBoard = nLyles.fullName();
+            champSport = nLyles.sportName;
+            posTop = "30px";
+            posLeft = "-60px";
+            grow = true;
+            fontControl ();
+        break;
+        case 2:
+            champOnBoard = gHolloway.fullName();
+            champSport = gHolloway.sportName;
+            posTop = "170px";
+            posLeft = "100px";
+            grow = true;
+            fontControl ();
+        break;
+        case 3:
+            champOnBoard = lJames.fullName();
+            champSport = lJames.sportName;
+            posTop = "60px";
+            posLeft = "-40px";
+            grow = true;
+            fontControl ();
+        break;
+        case 4:
+            champOnBoard = mJordan.fullName();
+            champSport = mJordan.sportName;
+            posTop = "120px";
+            posLeft = "-100px";
+            grow = true;
+            fontControl ();
+        break;
+        case 5:
+            champOnBoard = kAbdulJabbar.fullName();
+            champSport = kAbdulJabbar.sportName;
+            posTop = "50px";
+            posLeft = "20px";
+            grow = true;
+            fontControl ();
+        break;
+        case 6:
+            champOnBoard = mPhelps.fullName();
+            champSport = mPhelps.sportName;
+            posTop = "130px";
+            posLeft = "-120px";
+            grow = true;
+            fontControl ();
+        break;
+        case 7:
+            champOnBoard = mSpitz.fullName();
+            champSport = mSpitz.sportName;
+            posTop = "150px";
+            posLeft = "100px";
+            grow = true;
+            fontControl ();
+        break;
+        case 8:
+            champOnBoard = iThorpe.fullName();
+            champSport = iThorpe.sportName;
+            posTop = "120px";
+            posLeft = "120px";
+            grow = true;
+            fontControl ();
+        break;
+    }
+
+  }
+
 /* Function to store champion details */
 
 function champDetail (sport, first, last, achyear, ach) {
@@ -77,22 +250,12 @@ function champDetail (sport, first, last, achyear, ach) {
     this.lastName = last;
     this.achieveYear = achyear;
     this.achievement = ach;
+    this.fullName = function() {
+        return this.firstName + " " + this.lastName
+      };
   }
 
-/* Champion details */
-
-const uBolt = new champDetail("Athletics", "Usain", "Bolt", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const nLyles = new champDetail("Athletics", "Noah", "Lyles", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const gHolloway = new champDetail("Athletics", "Grant", "Holloway", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const lJames = new champDetail("Basketball", "Lebron", "James", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const mJordan = new champDetail("Basketball", "Michael", "Jordan", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const kAbdulJabbar = new champDetail("Basketball", "Kareem", "Abdul-Jabbar", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const mPhelps = new champDetail("Swimming", "Michael", "Phelps", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const mSpitz = new champDetail("Swimming", "Mark", "Spitz", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const iThorpe = new champDetail("Swimming", "Ian", "Thorpe", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-
-
-console.log(uBolt);
+//console.log(uBolt);
 
 
 let year1 = document.getElementById("yr1");
@@ -134,52 +297,61 @@ switch (champ) {
 
     case "20":
         person = "Usain Bolt";
+        selection = true;
         popS2S3(person, uBolt);
     break;
 
     case "21":
         person = "Noah Lyles";
+        selection = true;
         popS2S3(person, nLyles);
     break;
 
     case "22":
         person = "Grant Holloway";
+        selection = true;
         popS2S3(person, gHolloway);
     break;
 
     case "23":
         person = "Lebron James";
+        selection = true;
         popS2S3(person, lJames);
     break;
 
     case "24":
         person = "Michael Jordan";
+        selection = true;
         popS2S3(person, mJordan);
     break;
 
     case "25":
         person = "Kareem Abdul-Jabbar";
+        selection = true;
         popS2S3(person, kAbdulJabbar);
     break;
 
     case "26":
         person = "Michael Phelps";
+        selection = true;
         popS2S3(person, mPhelps);
     break;
 
     case "27":
         person = "Mark Spitz";
+        selection = true;
         popS2S3(person, mSpitz);
     break;
 
     case "28":
         person = "Ian Thorpe";
+        selection = true;
         popS2S3(person, iThorpe);
     break;
 
     default:
-        person = "Ian Thorpe";
-        popS2S3(person, iThorpe);
+        person = "Michael Jordan";
+        popS2S3(person, mJordan);
 }
 
 }
@@ -210,9 +382,11 @@ async function getGiphys(sportsman){
           image.setAttribute('src', addresses);
           if (i === 2) {
             giphy1.appendChild(image);
-          } else if (i === 3) {
+          }
+          if (i === 3) {
             giphy2.appendChild(image);
-          } else if (i === 4) {
+          }
+          if (i === 4) {
             giphy3.appendChild(image);
           }
           
@@ -233,6 +407,5 @@ function popS2S3(person, shortPerson) {
     achievement4.innerHTML = shortPerson.achievement[3];
 
     getGiphys (person);
-
 }
 
