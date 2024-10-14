@@ -88,7 +88,94 @@ header {
     font-size: 18px;
 }
 
+/*    Sign Up Modal    */
 
+input[type=text], input[type=password] {
+    width:100%;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    border: none;
+    background: #e2e2e2;
+    display: inline-block;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    outline: none;
+    background: #666161;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 10px;
+    opacity: 0.8;
+    color: white;
+    background: #51b993
+}
+
+button:hover {
+    opacity: 1;
+}
+
+.cnclButton {
+    background: red;
+}
+
+.formButtons {
+    display: flex;
+
+}
+
+.formSection {
+    padding: 20px;
+}
+
+.modal {
+    position: fixed;
+    z-index: 11;
+    left: 0;
+    top: 0;
+    display: none;
+    background: white;
+    overflow: auto;
+    padding: 100px 0 0 0;
+    width: 100%;
+    height: 100%;
+}
+
+.signUpForm {
+    margin: 10% auto 10% auto;
+    border: 2px solid #888;
+    width: 80%;
+    background: #fcfcfc;
+}
+
+hr {
+    margin-bottom: 20px;
+    border: 2px solid #e2e2e2;
+}
+
+.shutModal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #e2e2e2;
+}
+
+.shutModal:hover, .shutModal:focus {
+    cursor: pointer;
+    color: #ad4836;
+}
+
+.formButtons::after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
 /*   Section 1 Champions Board   */
 

@@ -1,5 +1,25 @@
 //console.log("Pretty Mary");
 
+/*    Sign Up Modal    */
+
+let modal = document.getElementById("signUp");
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+/* let signUpPress =  *//* document.getElementById("signUpPopUp"); */
+
+document.getElementById("signUpPopUp").addEventListener("click", showModal);
+
+function showModal() {
+    console.log("its pressed");
+    document.getElementById("signUp").style.display = "block";
+
+}
+
 /* Champion details */
 
 const uBolt = new champDetail("Athletics", "Usain", "Bolt", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);

@@ -39,9 +39,9 @@
 
         <nav class="champion-board-links">
             <ul>
-                <li><a href="">Leader Board</a></li>
-                <li><a href="">Vote</a></li>
-                <li><a href="">Sign Up</a></li>
+                <li><a href="#">Leader Board</a></li>
+                <li><a href="#">Vote</a></li>
+                <li id="signUpPopUp"><a href="#">Sign Up</a></li>
             </ul>
             
         </nav>
@@ -50,6 +50,42 @@
              <a href="anotherPage.html">AnotherPage</a> -->
 
     </header>
+
+    <!-- Sign Up Modal -->
+
+    <div class="modal" id="signUp">
+
+      <span class="shutModal" title="Close Modal" onclick="document.getElementById('signUp').style.display='none'">&times;</span>
+
+      <form class="signUpForm">
+        <div class="formSection">
+          <h3>Sign Up</h3>
+          <p>Create Account</p><hr>
+
+          <label for="email">Email</label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+
+          <label for="pw">Password</label>
+          <input type="password" placeholder="Enter Password" name="pw" required>
+
+          <label for="pwCheck">Email</label>
+          <input type="password" placeholder="Re-Enter Password" name="pwCheck" required>
+
+          <label>
+            <input type="checkbox" checked="checked" name="saveDetails"> Remember Me
+          </label>
+
+          <p>Creating this account you agree to our <a href="#">Terms & Conditions</a></p>
+
+          <div class="formButtons">
+            <button type="button" class="cnclButton" onclick="document.getElementById('signUp').style.display='none'">Cancel</button>
+            <button type="submit" class="suButton">Sign Up</button>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
 
     <!-- Section 1 Champions Board -->
 
@@ -126,20 +162,20 @@
               <th>Achievement</th>
             </tr>
             <tr>
-              <td id="yr1">Alfreds Futterkiste</td>
-              <td id="ach1">Maria Anders</td>
+              <td id="yr1"></td>
+              <td id="ach1"></td>
             </tr>
             <tr>
-              <td id="yr2">Centro comercial Moctezuma</td>
-              <td id="ach2">Francisco Chang</td>
+              <td id="yr2"></td>
+              <td id="ach2"></td>
             </tr>
             <tr>
-                <td  id="yr3">Centro comercial Moctezuma</td>
-                <td  id="ach3">Francisco Chang</td>
+                <td  id="yr3"></td>
+                <td  id="ach3"></td>
               </tr>
               <tr>
-                <td id="yr4">Centro comercial Moctezuma</td>
-                <td id="ach4">Francisco Chang</td>
+                <td id="yr4"></td>
+                <td id="ach4"></td>
               </tr>
           </table>
 
