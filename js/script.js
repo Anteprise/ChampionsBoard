@@ -12,6 +12,19 @@ const mPhelps = new champDetail("Swimming", "Michael", "Phelps", ["2014", "2015"
 const mSpitz = new champDetail("Swimming", "Mark", "Spitz", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
 const iThorpe = new champDetail("Swimming", "Ian", "Thorpe", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
 
+/* Function to store champion details */
+
+function champDetail (sport, first, last, achyear, ach) {
+    this.sportName = sport;
+    this.firstName = first;
+    this.lastName = last;
+    this.achieveYear = achyear;
+    this.achievement = ach;
+    this.fullName = function() {
+        return this.firstName + " " + this.lastName
+      };
+  }
+
 // Dropdown control //
 
 /* Function to determine which sport is selected & display champion dropdown with matching champions*/
@@ -28,7 +41,7 @@ document.getElementById("select-sport").onchange = function() {
     var opt2 = document.createElement('option');
     var opt3 = document.createElement('option');
     if (this.value == '10') {
-        opt0.textContent = "Champion";
+        opt0.textContent = "Choose Champion";
         opt1.textContent = "Usain Bolt";
         opt2.textContent = "Noah Lyles";
         opt3.textContent = "Grant Holloway";
@@ -40,7 +53,7 @@ document.getElementById("select-sport").onchange = function() {
         document.getElementById('select-champion').appendChild(opt2);
         document.getElementById('select-champion').appendChild(opt3);
     } else if (this.value == '11') {
-        opt0.textContent = "Champion";
+        opt0.textContent = "Choose Champion";
         opt1.textContent = "Lebron James";
         opt2.textContent = "Michael Jordan";
         opt3.textContent = "Kareem Abdul-Jabbar";
@@ -52,7 +65,7 @@ document.getElementById("select-sport").onchange = function() {
         document.getElementById('select-champion').appendChild(opt2);
         document.getElementById('select-champion').appendChild(opt3);
     } else if (this.value == '12') {
-        opt0.textContent = "Champion";
+        opt0.textContent = "Choose Champion";
         opt1.textContent = "Michael Phelps";
         opt2.textContent = "Mark Spitz";
         opt3.textContent = "Ian Thorpe";
@@ -101,13 +114,24 @@ window.addEventListener("load", (event) => {
 
   });
 
-   
+    function champBoardControl (display1, display2) {
+
+    if (!selection) {
+
+      changeChamp();
+
+    } else {
+
+      document.getElementById("champion-name").innerHTML = display1;
+      document.getElementById("champion-sport").innerHTML = display2;
+      document.getElementById("champion-name-sport").style.fontSize = "40pt";
+
+    }
+
+  }
+ 
 
   function fontControl () {
-
-    if (championSelected === "") {
-
-    /* while (!selection) { */
 
     document.getElementById("champion-name").innerHTML = champOnBoard;
     document.getElementById("champion-sport").innerHTML = champSport;
@@ -123,15 +147,7 @@ window.addEventListener("load", (event) => {
     console.log(selection);
     //console.log(modLeft);
 
-/* } */
-    } else {
-        document.getElementById("champion-name").innerHTML = champOnBoard;
-        document.getElementById("champion-sport").innerHTML = champSport;
-        document.getElementById("champion-name-sport").style.fontSize = "60pt";
-    }
-
   }
-
 
   function txtGrow (fsStore) {
 
@@ -139,7 +155,7 @@ window.addEventListener("load", (event) => {
 
     if (grow) {
         fsStore = fsStore + 1;
-        if (fsStore <= 60) {
+        if (fsStore <= 50) {
             document.getElementById("champion-name-sport").style.fontSize = fsStore + "pt";
         }
         else {
@@ -148,7 +164,7 @@ window.addEventListener("load", (event) => {
     } else {
         fsStore = fsStore - 1;
         if (fsStore < 1) {
-            changeChamp();
+            champBoardControl(display1, display2);
             return;
         }
             
@@ -163,7 +179,7 @@ window.addEventListener("load", (event) => {
 
     randomChamp = Math.floor(Math.random() * 9);
 
-    console.log(randomChamp);
+    //console.log(randomChamp);
 
     switch (randomChamp) {
         case 0:
@@ -241,22 +257,6 @@ window.addEventListener("load", (event) => {
     }
 
   }
-
-/* Function to store champion details */
-
-function champDetail (sport, first, last, achyear, ach) {
-    this.sportName = sport;
-    this.firstName = first;
-    this.lastName = last;
-    this.achieveYear = achyear;
-    this.achievement = ach;
-    this.fullName = function() {
-        return this.firstName + " " + this.lastName
-      };
-  }
-
-//console.log(uBolt);
-
 
 let year1 = document.getElementById("yr1");
 let achievement1 = document.getElementById("ach1");
@@ -372,8 +372,6 @@ async function getGiphys(sportsman){
       const giphyResponse = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${giphyKey}&q=${gipho}`);
       const giphyData = await giphyResponse.json();
 
-      //console.log(gipho);
-
        for (let i = 0; i < 10; i++) {
 
           const addresses = giphyData.data[i].images.fixed_width.url;
@@ -395,6 +393,9 @@ async function getGiphys(sportsman){
 
 /* Function to populate section 2 with champion Giphy's & the section 3 table with champion achievements */
 
+let display1 = "";
+let display2 = "";
+
 function popS2S3(person, shortPerson) {
 
     year1.innerHTML = shortPerson.achieveYear[0];
@@ -407,5 +408,10 @@ function popS2S3(person, shortPerson) {
     achievement4.innerHTML = shortPerson.achievement[3];
 
     getGiphys (person);
-}
 
+    display1 = shortPerson.fullName();
+    display2 = shortPerson.sportName;
+
+    champBoardControl (display1, display2);
+
+}
