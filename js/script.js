@@ -1,25 +1,5 @@
 //console.log("Pretty Mary");
 
-/*    Sign Up Modal    */
-
-let modal = document.getElementById("signUp");
-
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-/* let signUpPress =  *//* document.getElementById("signUpPopUp"); */
-
-document.getElementById("signUpPopUp").addEventListener("click", showModal);
-
-function showModal() {
-    console.log("its pressed");
-    document.getElementById("signUp").style.display = "block";
-
-}
-
 /* Champion details */
 
 const uBolt = new champDetail("Athletics", "Usain", "Bolt", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
@@ -43,19 +23,170 @@ function champDetail (sport, first, last, achyear, ach) {
     this.fullName = function() {
         return this.firstName + " " + this.lastName
       };
+    /* this.totalVotes = votes; */
   }
+
+  //console.log(uBolt.totalVotes);
+
+/* Close all three modals when their window is clicked on */
+
+let theLeaders = document.getElementById("showLeaders");
+let toVote = document.getElementById("showVoting");
+let modal = document.getElementById("signUp");
+let champDrop = document.getElementById('select-champion');
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+
+        //Resume Champion Board random display
+        selection = false;
+        champDrop.style.display = "none";
+        //champBoardControl();
+    } else if (event.target == theLeaders) {
+        theLeaders.style.display = "none";
+
+        //Resume Champion Board random display
+        selection = false;
+        champDrop.style.display = "none";
+        //champBoardControl();
+    } else if (event.target == toVote) {
+        toVote.style.display = "none";
+
+        //Resume Champion Board random display
+        selection = false;
+        champDrop.style.display = "none";
+        //champBoardControl();
+    }
+    
+}
+
+        /* Leader Board Modal */
+
+/* Resume Champion Board random display when Voting modal is closed */
+
+document.querySelector(".shutLeaders").addEventListener("click", resumeChampBoard);
+
+/* Function to display Leaders PopUp */
+
+document.getElementById("leaderPopUp").addEventListener("click", showLead);
+
+function showLead() {
+
+    document.getElementById("showLeaders").style.display = "block";
+
+    selection = true; //Pause Champion Board random display
+
+}
+
+        /* Voting Modal */
+
+/* Resume Champion Board random display when Voting modal is closed */
+
+document.querySelector(".cancelBtn").addEventListener("click", resumeChampBoard);
+
+document.querySelector(".shutVoting").addEventListener("click", resumeChampBoard);
+ 
+/* Function to display Voting PopUp */
+
+document.getElementById("votePopUp").addEventListener("click", showVotes);
+
+function showVotes() {
+
+    document.getElementById("showVoting").style.display = "block";
+
+    selection = true; //Pause Champion Board random display
+
+}
+
+/* Function to read voting form radios */
+
+let countA = 20;
+let countB = 30;
+
+/* document.querySelectorAll("#uB, #nL").forEach(e => e.addEventListener('change', ({checked, id}) => {
+    if(checked) {
+      if(id === "uB") {
+        countA++
+      } else if (id === "nL") {
+        countB++
+      }
+        console.log(countA);
+        alert(countB);
+    }
+  })); */
+  let radios = 0;
+radios = document.getElementsByName('fav_champion').value;
+//alert(radios);
+let boltVotes = 0;
+
+document.querySelector(".submitBtn").addEventListener("click", readRadios);
+
+function readRadios () {
+    radios = document.getElementsByName('fav_champion').value;
+    alert(radios);
+    if (radios[0].checked) {
+    boltVotes++;
+    //alert(boltVotes);
+  } else if (radios[1].checked) {
+    nLyles.totalVotes = nLyles.totalVotes + 1;
+  } else if (radios[2].checked) {
+    gHolloway.totalVotes = gHolloway.totalVotes + 1;
+  } else if (radios[3].checked) {
+    lJames.totalVotes = lJames.totalVotes + 1;
+  } else if (radios[4].checked) {
+    mJordan.totalVotes = mJordan.totalVotes + 1;
+  } else if (radios[5].checked) {
+    kAbdulJabbar.totalVotes = kAbdulJabbar.totalVotes + 1;
+  } else if (radios[6].checked) {
+    mPhelps.totalVotes = mPhelps.totalVotes + 1;
+  } else if (radios[7].checked) {
+    mSpitz.totalVotes = mSpitz.totalVotes + 1;
+  } else if (radios[8].checked) {
+    iThorpe.totalVotes = iThorpe.totalVotes + 1;
+  }
+
+}
+
+
+        /*    Sign Up Modal    */
+
+/* Resume Champion Board random display when Sign Up modal is closed */
+
+document.querySelector(".cnclButton").addEventListener("click", resumeChampBoard);
+
+document.querySelector(".shutModal").addEventListener("click", resumeChampBoard);
+
+function resumeChampBoard () {
+
+    //Resume Champion Board random display
+    selection = false;
+    champDrop.style.display = "none";
+
+}
+ 
+/* Function to display Sign Up Pop Up */
+
+document.getElementById("signUpPopUp").addEventListener("click", showModal);
+
+function showModal() {
+
+    document.getElementById("signUp").style.display = "block";
+
+    selection = true; //Pause Champion Board random display
+
+}
 
 // Dropdown control //
 
 /* Function to determine which sport is selected & display champion dropdown with matching champions*/
 
-document.getElementById("select-sport").onchange = function() {
+document.getElementById("select-sport").onclick = function() {
 
     document.getElementById('select-champion').disabled = false; //enabling s2 select
     document.getElementById('select-champion').innerHTML = ""; //clear s2 to avoid conflicts between options values
     document.getElementById('select-champion').style.display = "block";
     let sportSelection = document.getElementById("select-sport").value;
-    console.log(sportSelection);
     var opt0 = document.createElement('option');
     var opt1 = document.createElement('option');
     var opt2 = document.createElement('option');
@@ -107,7 +238,6 @@ let championSelected = "";
 document.getElementById("select-champion").onchange = function() {
 
     championSelected = document.getElementById("select-champion").value;
-    console.log(championSelected);
     populateS2S3(championSelected);
     document.querySelector('.champions-giphys').style.display = "flex";
     document.querySelector('.champion-achievements-table').style.display = "block";
@@ -121,8 +251,7 @@ let champSport = "";
 let grow = true;
 let posTop = "50px";
 let posLeft = "-50px";
-let selection = false;
-console.log(championSelected);
+let selection;
 
 window.addEventListener("load", (event) => {
 
@@ -130,26 +259,10 @@ window.addEventListener("load", (event) => {
     champSport = uBolt.sportName;
     document.getElementById("champion-name").innerHTML = champOnBoard;
     document.getElementById("champion-sport").innerHTML = champSport;
+    selection = false;
     fontControl();
 
   });
-
-    function champBoardControl (display1, display2) {
-
-    if (!selection) {
-
-      changeChamp();
-
-    } else {
-
-      document.getElementById("champion-name").innerHTML = display1;
-      document.getElementById("champion-sport").innerHTML = display2;
-      document.getElementById("champion-name-sport").style.fontSize = "40pt";
-
-    }
-
-  }
- 
 
   function fontControl () {
 
@@ -164,12 +277,11 @@ window.addEventListener("load", (event) => {
     //modLeft = parseInt(posLeft);
     window.setTimeout(txtGrow, 500, modSize);
 
-    console.log(selection);
-    //console.log(modLeft);
-
   }
 
   function txtGrow (fsStore) {
+
+    if (!selection) {
 
     console.log(fsStore);
 
@@ -184,22 +296,22 @@ window.addEventListener("load", (event) => {
     } else {
         fsStore = fsStore - 1;
         if (fsStore < 1) {
-            champBoardControl(display1, display2);
+            changeChamp();
             return;
         }
             
         document.getElementById("champion-name-sport").style.fontSize = fsStore + "pt";
     }
 
+    }
+    
     window.setTimeout(txtGrow, 20, fsStore);
-
+    
   }
 
   function changeChamp () {
 
     randomChamp = Math.floor(Math.random() * 9);
-
-    //console.log(randomChamp);
 
     switch (randomChamp) {
         case 0:
@@ -413,9 +525,6 @@ async function getGiphys(sportsman){
 
 /* Function to populate section 2 with champion Giphy's & the section 3 table with champion achievements */
 
-let display1 = "";
-let display2 = "";
-
 function popS2S3(person, shortPerson) {
 
     year1.innerHTML = shortPerson.achieveYear[0];
@@ -427,11 +536,10 @@ function popS2S3(person, shortPerson) {
     year4.innerHTML = shortPerson.achieveYear[3];
     achievement4.innerHTML = shortPerson.achievement[3];
 
+    document.getElementById("champion-name").innerHTML = person;
+    document.getElementById("champion-sport").innerHTML = shortPerson.sportName;
+    document.getElementById("champion-name-sport").style.fontSize = "40pt";
+
     getGiphys (person);
-
-    display1 = shortPerson.fullName();
-    display2 = shortPerson.sportName;
-
-    champBoardControl (display1, display2);
 
 }
