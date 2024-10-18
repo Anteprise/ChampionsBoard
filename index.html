@@ -70,39 +70,39 @@
 
         <tbody>
           <tr>
-            <td id="champ1"></td>
+            <td id="champ1">Usain Bolt</td>
             <td id="votes1"></td>
           </tr>
           <tr>
-            <td id="champ2"></td>
+            <td id="champ2">Michael Phelps</td>
             <td id="votes2"></td>
           </tr>
           <tr>
-            <td id="champ3"></td>
+            <td id="champ3">Michael Jordan</td>
             <td id="votes3"></td>
           </tr>
           <tr>
-            <td id="champ4"></td>
+            <td id="champ4">Lebron James</td>
             <td id="votes4"></td>
           </tr>
           <tr>
-            <td id="champ5"></td>
+            <td id="champ5">Mark Spitz</td>
             <td id="votes5"></td>
           </tr>
           <tr>
-            <td id="champ6"></td>
+            <td id="champ6">Grant Holloway</td>
             <td id="votes6"></td>
           </tr>
           <tr>
-            <td id="champ7"></td>
+            <td id="champ7">Kareem Abdul-Jabber</td>
             <td id="votes7"></td>
           </tr>
           <tr>
-            <td id="champ8"></td>
+            <td id="champ8">Ian Thorpe</td>
             <td id="votes8"></td>
           </tr>
           <tr>
-            <td id="champ9"></td>
+            <td id="champ9">Noah Lyles</td>
             <td id="votes9"></td>
           </tr>
         </tbody>
@@ -117,60 +117,60 @@
 
       <span class="shutVoting" title="Close Voting" onclick="document.getElementById('showVoting').style.display='none'">&times;</span>
     
-      <form class="votingForm">
-        <div class="voteselection">
+      <form class="votingForm"  onsubmit="getFormChecked(event)">
+       <div class="voteselection">
 
           <label for="uB">
-          <input type="radio" id="uB" name="fav_champion" value=1>
+          <input type="radio" id="uB" name="fav_champion">
           Usain Bolt
           </label>
           
           <label for="nL">
-          <input type="radio" id="nL" name="fav_champion" value=2>
+          <input type="radio" id="nL" name="fav_champion">
           Noah Lyle
           </label>
 
           <label for="gH">
-          <input type="radio" id="gH" name="fav_champion" value=3>
+          <input type="radio" id="gH" name="fav_champion">
           Grant Holloway
           </label>
 
           <label for="lJ">
-          <input type="radio" id="lJ" name="fav_champion" value=4>
+          <input type="radio" id="lJ" name="fav_champion">
           Lebron James
           </label>
 
           <label for="mJ">
-          <input type="radio" id="mJ" name="fav_champion" value=5>
+          <input type="radio" id="mJ" name="fav_champion">
           Michael Jordan
           </label>
           
           <label for="kAJ">
-          <input type="radio" id="kAJ" name="fav_champion" value=6>
+          <input type="radio" id="kAJ" name="fav_champion">
           Kareem Abdul-Jabber
           </label>
 
           <label for="mP">
-          <input type="radio" id="mP" name="fav_champion" value=7>
+          <input type="radio" id="mP" name="fav_champion">
           Michael Phelps
           </label>
 
           <label for="mS">
-          <input type="radio" id="mS" name="fav_champion" value=8>
+          <input type="radio" id="mS" name="fav_champion">
           Mark Spitz
           </label>
           
           <label for="iT">
-          <input type="radio" id="iT" name="fav_champion" value=9>
+          <input type="radio" id="iT" name="fav_champion">
           Ian Thorpe
           </label>
         
         <div class="voteButtons">
           <button type="button" class="cancelBtn" onclick="document.getElementById('showVoting').style.display='none'">Cancel</button>
-          <button type="submit" class="submitBtn">Submit your vote</button>
+          <button type="submit" class="submitBtn" onclick="document.getElementById('showVoting').style.display='none'">Submit your vote</button>
         </div>
 
-        </div>
+      </div>
 
       </form>
 
@@ -184,7 +184,8 @@
 
       <form class="signUpForm">
         <div class="formSection">
-          <h3>Sign Up</h3>
+
+          <p class="bigHead">Sign Up</p>
           <p>Create Account</p><hr>
 
           <label for="email">Email</label>
@@ -197,7 +198,8 @@
           <input type="password" placeholder="Re-Enter Password" id="pwCheck" name="userPwCheck" required>
 
           <label>
-            <input type="checkbox" checked="checked" name="saveDetails"> Remember Me
+            <input type="checkbox" checked="checked" name="saveDetails">
+             Remember Me
           </label>
 
           <p class="small">Creating this account you agree to our <a href="#">Terms & Conditions</a></p>

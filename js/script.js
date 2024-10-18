@@ -2,19 +2,19 @@
 
 /* Champion details */
 
-const uBolt = new champDetail("Athletics", "Usain", "Bolt", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const nLyles = new champDetail("Athletics", "Noah", "Lyles", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const gHolloway = new champDetail("Athletics", "Grant", "Holloway", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const lJames = new champDetail("Basketball", "Lebron", "James", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const mJordan = new champDetail("Basketball", "Michael", "Jordan", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const kAbdulJabbar = new champDetail("Basketball", "Kareem", "Abdul-Jabbar", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const mPhelps = new champDetail("Swimming", "Michael", "Phelps", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const mSpitz = new champDetail("Swimming", "Mark", "Spitz", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
-const iThorpe = new champDetail("Swimming", "Ian", "Thorpe", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"]);
+let uBolt = new champDetail("Athletics", "Usain", "Bolt", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 1022);
+let nLyles = new champDetail("Athletics", "Noah", "Lyles", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 224);
+let gHolloway = new champDetail("Athletics", "Grant", "Holloway", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 421);
+let lJames = new champDetail("Basketball", "Lebron", "James", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 878);
+let mJordan = new champDetail("Basketball", "Michael", "Jordan", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 927);
+let kAbdulJabbar = new champDetail("Basketball", "Kareem", "Abdul-Jabbar", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 344);
+let mPhelps = new champDetail("Swimming", "Michael", "Phelps", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 943);
+let mSpitz = new champDetail("Swimming", "Mark", "Spitz", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 647);
+let iThorpe = new champDetail("Swimming", "Ian", "Thorpe", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 336);
 
 /* Function to store champion details */
 
-function champDetail (sport, first, last, achyear, ach) {
+function champDetail (sport, first, last, achyear, ach, votes) {
     this.sportName = sport;
     this.firstName = first;
     this.lastName = last;
@@ -23,7 +23,7 @@ function champDetail (sport, first, last, achyear, ach) {
     this.fullName = function() {
         return this.firstName + " " + this.lastName
       };
-    /* this.totalVotes = votes; */
+    this.totalVotes = votes;
   }
 
   //console.log(uBolt.totalVotes);
@@ -73,6 +73,16 @@ document.getElementById("leaderPopUp").addEventListener("click", showLead);
 
 function showLead() {
 
+    document.getElementById("votes1").innerHTML = uBolt.totalVotes;
+    document.getElementById("votes2").innerHTML = mPhelps.totalVotes;
+    document.getElementById("votes3").innerHTML = mJordan.totalVotes;
+    document.getElementById("votes4").innerHTML = lJames.totalVotes;
+    document.getElementById("votes5").innerHTML = mSpitz.totalVotes;
+    document.getElementById("votes6").innerHTML = gHolloway.totalVotes;
+    document.getElementById("votes7").innerHTML = kAbdulJabbar.totalVotes;
+    document.getElementById("votes8").innerHTML = iThorpe.totalVotes;
+    document.getElementById("votes9").innerHTML = nLyles.totalVotes;
+
     document.getElementById("showLeaders").style.display = "block";
 
     selection = true; //Pause Champion Board random display
@@ -101,50 +111,41 @@ function showVotes() {
 
 /* Function to read voting form radios */
 
-let countA = 20;
-let countB = 30;
+function getFormChecked(event) {
 
-/* document.querySelectorAll("#uB, #nL").forEach(e => e.addEventListener('change', ({checked, id}) => {
-    if(checked) {
-      if(id === "uB") {
-        countA++
-      } else if (id === "nL") {
-        countB++
-      }
-        console.log(countA);
-        alert(countB);
-    }
-  })); */
-  let radios = 0;
-radios = document.getElementsByName('fav_champion').value;
-//alert(radios);
-let boltVotes = 0;
+    event.preventDefault();
 
-document.querySelector(".submitBtn").addEventListener("click", readRadios);
+    //alert(uBolt.totalVotes);
 
-function readRadios () {
-    radios = document.getElementsByName('fav_champion').value;
-    alert(radios);
+    radios = document.getElementsByName('fav_champion');
+    //alert(radios.length);
     if (radios[0].checked) {
-    boltVotes++;
-    //alert(boltVotes);
-  } else if (radios[1].checked) {
-    nLyles.totalVotes = nLyles.totalVotes + 1;
-  } else if (radios[2].checked) {
-    gHolloway.totalVotes = gHolloway.totalVotes + 1;
-  } else if (radios[3].checked) {
-    lJames.totalVotes = lJames.totalVotes + 1;
-  } else if (radios[4].checked) {
-    mJordan.totalVotes = mJordan.totalVotes + 1;
-  } else if (radios[5].checked) {
-    kAbdulJabbar.totalVotes = kAbdulJabbar.totalVotes + 1;
-  } else if (radios[6].checked) {
-    mPhelps.totalVotes = mPhelps.totalVotes + 1;
-  } else if (radios[7].checked) {
-    mSpitz.totalVotes = mSpitz.totalVotes + 1;
-  } else if (radios[8].checked) {
-    iThorpe.totalVotes = iThorpe.totalVotes + 1;
-  }
+        uBolt.totalVotes = uBolt.totalVotes + 1;
+        //alert(uBolt.totalVotes);
+    } else if (radios[1].checked) {
+        nLyles.totalVotes = nLyles.totalVotes + 1;
+    } else if (radios[2].checked) {
+        gHolloway.totalVotes = gHolloway.totalVotes + 1;
+        document.getElementById("votes1").innerHTML = uBolt.totalVotes;
+    } else if (radios[3].checked) {
+        lJames.totalVotes = lJames.totalVotes + 1;
+        document.getElementById("votes1").innerHTML = uBolt.totalVotes;
+    } else if (radios[4].checked) {
+        mJordan.totalVotes = mJordan.totalVotes + 1;
+        document.getElementById("votes1").innerHTML = uBolt.totalVotes;
+    } else if (radios[5].checked) {
+        kAbdulJabbar.totalVotes = kAbdulJabbar.totalVotes + 1;
+        document.getElementById("votes1").innerHTML = uBolt.totalVotes;
+    } else if (radios[6].checked) {
+        mPhelps.totalVotes = mPhelps.totalVotes + 1;
+        document.getElementById("votes1").innerHTML = uBolt.totalVotes;
+    } else if (radios[7].checked) {
+        mSpitz.totalVotes = mSpitz.totalVotes + 1;
+        document.getElementById("votes1").innerHTML = uBolt.totalVotes;
+    } else if (radios[8].checked) {
+        iThorpe.totalVotes = iThorpe.totalVotes + 1;
+        document.getElementById("votes1").innerHTML = uBolt.totalVotes;
+    }
 
 }
 
@@ -252,6 +253,26 @@ let grow = true;
 let posTop = "50px";
 let posLeft = "-50px";
 let selection;
+let txtSize = 50;
+let txtGrowDelay = 20;
+let ch1PosTop = "50px";
+let ch1PosLeft = "-50px";
+let ch2PosTop = "30px";
+let ch2PosLeft = "-60px";
+let ch3PosTop = "170px";
+let ch3PosLeft = "100px";
+let ch4PosTop = "60px";
+let ch4PosLeft = "-40px";
+let ch5PosTop = "120px";
+let ch5PosLeft = "100px";
+let ch6PosTop = "50px";
+let ch6PosLeft = "20px";
+let ch7PosTop = "130px";
+let ch7PosLeft = "-120px";
+let ch8PosTop = "150px";
+let ch8PosLeft = "100px";
+let ch9PosTop = "120px";
+let ch9PosLeft = "120px";
 
 window.addEventListener("load", (event) => {
 
@@ -275,11 +296,87 @@ window.addEventListener("load", (event) => {
     //modTop = parseInt(posTop);
     document.getElementById("champion-name-sport").style.left = posLeft;
     //modLeft = parseInt(posLeft);
+
+    if (window.matchMedia("(max-width: 900px)").matches) {
+
+        txtSize = 30;
+        txtGrowDelay = 100;
+        ch1PosTop = "50px";
+        ch1PosLeft = "-50px";
+        ch2PosTop = "30px";
+        ch2PosLeft = "-60px";
+        ch3PosTop = "70px";
+        ch3PosLeft = "30px";
+        ch4PosTop = "60px";
+        ch4PosLeft = "-40px";
+        ch5PosTop = "80px";
+        ch5PosLeft = "70px";
+        ch6PosTop = "50px";
+        ch6PosLeft = "40px";
+        ch7PosTop = "20px";
+        ch7PosLeft = "-40px";
+        ch8PosTop = "50px";
+        ch8PosLeft = "40px";
+        ch9PosTop = "50px";
+        ch9PosLeft = "80px";
+
+    if (window.matchMedia("(max-width: 600px)").matches) {
+
+        txtSize = 25;
+        txtGrowDelay = 100;
+        ch1PosTop = "50px";
+        ch1PosLeft = "-50px";
+        ch2PosTop = "30px";
+        ch2PosLeft = "-60px";
+        ch3PosTop = "70px";
+        ch3PosLeft = "40px";
+        ch4PosTop = "60px";
+        ch4PosLeft = "-40px";
+        ch5PosTop = "20px";
+        ch5PosLeft = "70px";
+        ch6PosTop = "50px";
+        ch6PosLeft = "20px";
+        ch7PosTop = "30px";
+        ch7PosLeft = "-60px";
+        ch8PosTop = "50px";
+        ch8PosLeft = "50px";
+        ch9PosTop = "20px";
+        ch9PosLeft = "20px";
+
+        }
+
+    } else {
+
+        txtSize = 50;
+        txtGrowDelay = 20;
+        ch1PosTop = "50px";
+        ch1PosLeft = "-50px";
+        ch2PosTop = "30px";
+        ch2PosLeft = "-60px";
+        ch3PosTop = "170px";
+        ch3PosLeft = "100px";
+        ch4PosTop = "60px";
+        ch4PosLeft = "-40px";
+        ch5PosTop = "120px";
+        ch5PosLeft = "100px";
+        ch6PosTop = "50px";
+        ch6PosLeft = "20px";
+        ch7PosTop = "130px";
+        ch7PosLeft = "-120px";
+        ch8PosTop = "150px";
+        ch8PosLeft = "100px";
+        ch9PosTop = "120px";
+        ch9PosLeft = "120px";
+
+    }
+
     window.setTimeout(txtGrow, 500, modSize);
 
   }
 
   function txtGrow (fsStore) {
+
+      console.log(txtSize);
 
     if (!selection) {
 
@@ -287,10 +384,11 @@ window.addEventListener("load", (event) => {
 
     if (grow) {
         fsStore = fsStore + 1;
-        if (fsStore <= 50) {
+        if (fsStore <= txtSize) {
             document.getElementById("champion-name-sport").style.fontSize = fsStore + "pt";
         }
         else {
+            /* window.setTimeout(5000); */
             grow = false;
         }
     } else {
@@ -305,7 +403,7 @@ window.addEventListener("load", (event) => {
 
     }
     
-    window.setTimeout(txtGrow, 20, fsStore);
+    window.setTimeout(txtGrow, txtGrowDelay, fsStore);
     
   }
 
@@ -317,72 +415,72 @@ window.addEventListener("load", (event) => {
         case 0:
             champOnBoard = uBolt.fullName();
             champSport = uBolt.sportName;
-            posTop = "100px";
-            posLeft = "100px";
+            posTop = ch1PosTop;
+            posLeft = ch1PosLeft;
             grow = true;
             fontControl ();
         break;
         case 1:
             champOnBoard = nLyles.fullName();
             champSport = nLyles.sportName;
-            posTop = "30px";
-            posLeft = "-60px";
+            posTop = ch2PosTop;
+            posLeft = ch2PosLeft;
             grow = true;
             fontControl ();
         break;
         case 2:
             champOnBoard = gHolloway.fullName();
             champSport = gHolloway.sportName;
-            posTop = "170px";
-            posLeft = "100px";
+            posTop = ch3PosTop;
+            posLeft = ch3PosLeft;
             grow = true;
             fontControl ();
         break;
         case 3:
             champOnBoard = lJames.fullName();
             champSport = lJames.sportName;
-            posTop = "60px";
-            posLeft = "-40px";
+            posTop = ch4PosTop;
+            posLeft = ch4PosLeft;
             grow = true;
             fontControl ();
         break;
         case 4:
             champOnBoard = mJordan.fullName();
             champSport = mJordan.sportName;
-            posTop = "120px";
-            posLeft = "-100px";
+            posTop = ch5PosTop;
+            posLeft = ch5PosLeft;
             grow = true;
             fontControl ();
         break;
         case 5:
             champOnBoard = kAbdulJabbar.fullName();
             champSport = kAbdulJabbar.sportName;
-            posTop = "50px";
-            posLeft = "20px";
+            posTop = ch6PosTop;
+            posLeft = ch6PosLeft;
             grow = true;
             fontControl ();
         break;
         case 6:
             champOnBoard = mPhelps.fullName();
             champSport = mPhelps.sportName;
-            posTop = "130px";
-            posLeft = "-120px";
+            posTop = ch7PosTop;
+            posLeft = ch7PosLeft;
             grow = true;
             fontControl ();
         break;
         case 7:
             champOnBoard = mSpitz.fullName();
             champSport = mSpitz.sportName;
-            posTop = "150px";
-            posLeft = "100px";
+            posTop = ch8PosTop;
+            posLeft = ch8PosLeft;
             grow = true;
             fontControl ();
         break;
         case 8:
             champOnBoard = iThorpe.fullName();
             champSport = iThorpe.sportName;
-            posTop = "120px";
-            posLeft = "120px";
+            posTop = ch9PosTop;
+            posLeft = ch9PosLeft;
             grow = true;
             fontControl ();
         break;
