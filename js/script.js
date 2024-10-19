@@ -254,7 +254,7 @@ let posTop = "50px";
 let posLeft = "-50px";
 let selection;
 let txtSize = 50;
-let txtGrowDelay = 20;
+let txtGrowDelay = 40;
 let ch1PosTop = "50px";
 let ch1PosLeft = "-50px";
 let ch2PosTop = "130px";
@@ -348,7 +348,7 @@ window.addEventListener("load", (event) => {
     } else {
 
         txtSize = 50;
-        txtGrowDelay = 20;
+        txtGrowDelay = 40;
         ch1PosTop = "50px";
         ch1PosLeft = "-50px";
         ch2PosTop = "130px";
@@ -641,3 +641,107 @@ function popS2S3(person, shortPerson) {
     getGiphys (person);
 
 }
+
+/* Blog */
+
+/* Section so users can add their posts to the blog */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const postForm = document.getElementById('post-form');
+    const blogPostsDiv = document.getElementById('posts-list');
+
+    /* Function to get the current date */
+    function getFormattedDate() {
+        const date = new Date();
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const year = date.getFullYear();
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        return `${month}/${day}/${year} ${hours}:${minutes}`;
+    }
+
+    /* Function to create a new post and add it to the top of the blog */
+    function addNewPost(title, content, date) {
+        const postDiv = document.createElement('div');
+        postDiv.classList.add('blog-post');
+
+        postDiv.innerHTML = `
+            
+            <p class="post-date">Posted by ${title} on: ${date}</p>
+            <p>${content}</p>
+        `;
+
+        blogPostsDiv.prepend(postDiv);
+    }
+
+    /* Form submission */
+    postForm.addEventListener('submit', (event) => {
+
+        event.preventDefault();
+
+        const title = document.getElementById('username').value;
+        const content = document.getElementById('comment').value;
+        const date = getFormattedDate();
+
+        /* Add the new post to the top */
+        addNewPost(title, content, date);
+
+        /* Reset the form fields */
+        postForm.reset();
+
+    });
+
+});
+
+/* Add more posts to bottom of blog */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const blogPostsSection = document.getElementById('blog-posts');
+    
+    const posts = [
+        {
+            date: "10/07/2024 3:45",
+            author: "Some Person",
+            content: "This is an older post loaded for viewing"
+        },
+        {
+            date: "10/06/2024 12:42",
+            author: "Another Poster",
+            content: "This recent post says that Usain Bolt is the best of the best"
+        }
+    ];
+
+    /* Function to load more posts */
+
+    function loadMorePosts() {
+
+        posts.forEach(post => {
+
+            const postArticle = document.createElement('article');
+            postArticle.classList.add('blog-post');
+            
+            const postMeta = document.createElement('p');
+            postMeta.classList.add('post-meta');
+            postMeta.textContent = `Posted by ${post.author} on ${post.date}`;
+            
+            const postContent = document.createElement('p');
+            postContent.classList.add('post-content');
+            postContent.textContent = post.content;
+            
+            postArticle.appendChild(postMeta);
+            postArticle.appendChild(postContent);
+            
+            blogPostsSection.appendChild(postArticle);
+
+        });
+    }
+
+    /* Load new posts when button is clicked */
+    const loadMoreButton = document.getElementById("loadMore");
+    loadMoreButton.addEventListener('click', loadMorePosts);
+
+});
+

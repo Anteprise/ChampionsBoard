@@ -315,34 +315,67 @@
 
     <!-- Users blog - comments about various champions -->
 
+    <section class="post-section">
+
+      <p>Add your post here</p>
+
+      <!-- Comment Form -->
+      <form id="post-form">
+
+          <label for="username">Your Name:</label>
+          <input type="text" id="username" name="username" required>
+
+          <label for="comment">Your Comment:</label>
+          <textarea id="comment" name="comment" required></textarea>
+
+          <button type="submit">Post Comment</button>
+      </form>
+
+    </section>
+
     <section class="champion-user-blog">
+
+      <button type="button" class="postBtn" id="postMore">Add Your Post</button>
 
         <div class="blog-shape">
           <section id="blog-posts">
-            <h5 class="post-title">Share your thoughts on your champion</h5><br />
+
+            <h5 class="post-title">Share your thoughts on your champion</h5><br /><br />
+
+              <!-- Div for new posts -->
+              <div id="posts-list">
+              </div>
+
             <article class="blog-post">
-                <p class="post-meta">Posted on October 10, 2024 by John Doe</p>
+                <p class="post-meta">Posted by John Doe on: 10/19/2024 15:13</p>
                 <p class="post-content">Lebron James is the best ever sportsman.</p>
             </article>
 
             <article class="blog-post">
-                <p class="post-meta">Posted on October 9, 2024 by Jane Smith</p>
-                <p class="post-content">You cannot go past Michael Phelps. No one compares!.</p>
+                <p class="post-meta">Posted by Jane Smith on: 10/19/2024 15:13</p>
+                <p class="post-content">You cannot go past Michael Phelps. No one compares!. You cannot go past Michael Phelps. No one compares!. You cannot go past Michael Phelps. No one compares!.</p>
             </article>
 
             <article class="blog-post">
-              <p class="post-meta">Posted on October 9, 2024 by Hillary Clinton</p>
+              <p class="post-meta">Posted by Hillary Clinton on: 10/19/2024 15:13</p>
               <p class="post-content">Go Usain Bolt. Lightening!!.</p>
             </article>
 
           <article class="blog-post">
-            <p class="post-meta">Posted on October 9, 2024 by Billy Watkins</p>
+            <p class="post-meta">Posted by Billy Watkins on: 10/19/2024 15:13</p>
             <p class="post-content">Micky Jordan kills them all.</p>
           </article>
+
+          <article class="blog-post">
+            <p class="post-meta">Posted by John Olivieri on: 10/19/2024 15:13</p>
+            <p class="post-content">I think Ian Thorpe is the best. He has feet like an elephant!</p>
+        </article>
 
         </section>
 
         </div>
+
+        <button type="button" class="loadBtn" id="loadMore">Load More Posts</button>
 
     </section>
 

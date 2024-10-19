@@ -1,7 +1,4 @@
 
-/* body {
-   font-family: sans-serif, monospace;
-} */
 
 @import "https://fonts.googleapis.com/css?family=Rancho&effect=fire-animation";
 
@@ -12,6 +9,7 @@ main {
     background-size: cover;
     /*filter: brightness(50%);*/
     max-width: 1200px;
+    /* height: fit-content; */
     margin: 0 auto;
     border: 2px solid black;
     position: relative;
@@ -163,6 +161,18 @@ header {
     color: #ad4836;
 }
 
+.cancelBtn, .submitBtn {
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 30px;
+    opacity: 0.8;
+    color: white;
+    background: #51b993;
+    border-radius: 5px;
+}
+
 .cancelBtn {
     background: red;
 }
@@ -250,7 +260,19 @@ input[type=text]:focus, input[type=password]:focus {
     background: #666161;
 }
 
-button {
+/* button {
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 30px;
+    opacity: 0.8;
+    color: white;
+    background: #51b993;
+    border-radius: 5px;
+} */
+
+.cnclButton, .suButton {
     cursor: pointer;
     border: none;
     width: 100%;
@@ -312,6 +334,7 @@ hr {
 .champions-board {
     margin: 10px;
     padding: 10px;
+    height: 530px;
     position: relative;
     display: flex;
     align-items: center;
@@ -466,34 +489,104 @@ table {
 
 /*   Users blog - comments about various champions   */
 
-.champion-user-blog {
-    margin: 10px;
-    height: auto;
-    overflow: hidden;
+/* Styling for the post form */
+
+.post-section p {
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 1rem;
+}
+
+#post-form {
+    margin-bottom: 2rem;
+    border: 1px solid #ddd;
+    padding: 1rem;
+}
+
+#post-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#post-form input, #post-form textarea {
+    width: 95%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#post-form button {
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#post-form button:hover {
+    background-color: #555;
+}
+
+.post-section {
+    margin: 10px auto;
+    padding: 15px;
+    width: 70%;
+    height: 280px;
+    border-radius: 10px;
+    position: relative;
+    background-color: white;
     border: 3px solid black;
 }
 
 .blog-shape {
-    margin: 20px auto;
-    width: 700px;
-    height: 360px;
+    margin: 30px auto;
+    width: 750px;
+    height: 400px;
     position: relative;
     background: whitesmoke;
     border: 3px solid black;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9);
     border-radius: 10px;
     background-color: #dddddd;
     padding: 15px;
-}
+    overflow: hidden;
+    overflow-y: scroll;
+}   
 
 #blog-posts {
     display: flex;
     flex-direction: column;
 }
 
+.champion-user-blog {
+    margin: 10px;
+    padding: 10px;
+    height: 550px;
+    position: relative;
+    border: 3px solid black;
+}
+
+.postBtn {
+    width: 50%;
+    margin: 0 25% 0 25%;
+    padding: 8px;
+    opacity: 0.8;
+    background-color: #333;
+    color: white;
+
+}
+
 .blog-post {
     margin-bottom: 2rem;
     border-bottom: 1px solid #ddd;
     padding-bottom: 1rem;
+    word-wrap: break-word;
+}
+
+.blog-shape, #blog-posts, .blog-post {
+    box-sizing: border-box;
 }
 
 .blog-post:last-child {
@@ -503,6 +596,7 @@ table {
 .post-title {
     font-size: 1.3rem;
     color: #333;
+    font-weight: bold;
 }
 
 .post-meta {
@@ -513,6 +607,16 @@ table {
 .post-content {
     font-size: 1.1rem;
     line-height: 1.6;
+}
+
+.loadBtn {
+    width: 50%;
+    margin: 0 25% 0 25%;
+    padding: 8px;
+    opacity: 0.8;
+    background-color: #333;
+    color: white;
+
 }
 
 
@@ -571,7 +675,7 @@ footer {
 @media (max-width: 850px) {
 
     main {
-        height: auto;
+        /* height: fit-content; */
     }
 
     /*   Heading & navigation   */
@@ -597,10 +701,6 @@ footer {
         margin: 10px auto;
         color: white;
         position: relative;
-    }
-
-    .champion-board-links a {
-        font-size: 14px;
     }
 
     .champion-board-links ul {
@@ -713,16 +813,11 @@ footer {
 
 @media (max-width: 600px) {
 
-    main {
-        height: auto;
-    }
-
     /*   Heading & navigation   */
 
     .champions-board-heading {
         width: auto;
         height: auto;
-        border: 2px solid black;
     }
 
     
@@ -731,21 +826,14 @@ footer {
     .champions-display-board {
         margin: 10px;
         width: 350px;
-        height: 200px;
-        border: 10px solid rgb(199, 174, 31);
     }
     
     .champions-display-board-lining {
         width: 344px;
         height: 194px;
-        border: 3px solid black;
     }
 
     /*   Section 2 Champions Giphy's   */
-
-    .giphy-box {
-        background-size: cover;
-    }
 
     .giphy-display-3 {
         display: none;
@@ -757,9 +845,8 @@ footer {
         margin: 10 auto;
     }
     
-    .champion-achievements-table table {
+    #champs-table {
         margin: 0 auto;
-        width: 100%;
     }
 
     td, th {
@@ -785,4 +872,40 @@ footer {
 
 }
 
+@media (max-width: 400px) {
+
+    /*   Heading & navigation   */
+
+    .champions-board-heading {
+        transform: scaleX(1.0) scaleY(1.0);
+    }
+
+    
+    /*   Section 1 Champions Board   */
+
+    .champions-display-board {
+        width: 320px;
+    }
+    
+    .champions-display-board-lining {
+        width: 314px;
+    }
+
+    /*   Section 2 Champions Giphy's   */
+
+    .giphy-box {
+        margin: 0 auto;
+    }
+
+    .giphy-display-3, .giphy-display-2 {
+        display: none;
+    }
+    
+    /*   Section 3 Champions Achievements Table   */    
+
+    /*   Users blog - comments about various champions   */
+
+    /*   Champions Board Footer   */
+
+}
 
