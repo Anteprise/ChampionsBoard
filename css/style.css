@@ -993,6 +993,15 @@ footer {
 
     /*   Users blog - comments about various champions   */
 
+    .blog-shape {
+        margin: 10px auto;
+    }
+
+
+    .champion-user-blog {
+        margin: 10px 0;
+    }
+
     /*   Champions Board Footer   */
 
 }

@@ -622,6 +622,7 @@ const giphy1 = document.querySelector(".giphy-display-1");
 const giphy2 = document.querySelector(".giphy-display-2");
 const giphy3 = document.querySelector(".giphy-display-3");
 
+
 async function getGiphys(sportsman){
 
       //event.preventDefault();
@@ -630,23 +631,24 @@ async function getGiphys(sportsman){
       const giphyResponse = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${giphyKey}&q=${gipho}`);
       const giphyData = await giphyResponse.json();
 
-       for (let i = 0; i < 10; i++) {
+          for (let i = 0; i < 5; i++) {
 
           const addresses = giphyData.data[i].images.fixed_width.url;
           const image = document.createElement('img');
 
           image.setAttribute('src', addresses);
-          if (i === 2) {
+
+          if (i === 0) {
             giphy1.appendChild(image);
           }
-          if (i === 3) {
+          if (i === 1) {
             giphy2.appendChild(image);
           }
           if (i === 4) {
             giphy3.appendChild(image);
           }
           
-  }
+    }
 }
 
 /* Function to populate section 2 with champion Giphy's & the section 3 table with champion achievements */
