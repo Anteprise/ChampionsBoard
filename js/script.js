@@ -193,8 +193,6 @@ function ValidateForm() {
         return (false);
     }
 
-    alert("func ran");
-
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.email.value))  
     {
         return (true);
@@ -347,22 +345,22 @@ window.addEventListener("load", (event) => {
 
     if (window.matchMedia("(max-width: 850px)").matches) {
 
-        txtSize = 20;
+        txtSize = 25;
         txtGrowDelay = 100;
         ch1PosTop = "50px";
         ch1PosLeft = "-50px";
         ch2PosTop = "80px";
-        ch2PosLeft = "-60px";
+        ch2PosLeft = "-40px";
         ch3PosTop = "70px";
         ch3PosLeft = "40px";
         ch4PosTop = "60px";
         ch4PosLeft = "-40px";
         ch5PosTop = "20px";
-        ch5PosLeft = "70px";
+        ch5PosLeft = "40px";
         ch6PosTop = "50px";
         ch6PosLeft = "10px";
         ch7PosTop = "30px";
-        ch7PosLeft = "-60px";
+        ch7PosLeft = "-50px";
         ch8PosTop = "50px";
         ch8PosLeft = "50px";
         ch9PosTop = "20px";
@@ -387,7 +385,7 @@ window.addEventListener("load", (event) => {
         ch6PosTop = "50px";
         ch6PosLeft = "0px";
         ch7PosTop = "130px";
-        ch7PosLeft = "-90px";
+        ch7PosLeft = "-70px";
         ch8PosTop = "150px";
         ch8PosLeft = "100px";
         ch9PosTop = "120px";
@@ -403,11 +401,11 @@ window.addEventListener("load", (event) => {
 
   function txtGrow (fsStore) {
 
-      console.log(txtSize);
+      /* console.log(txtSize); */
 
     if (!selection) {
 
-    console.log(fsStore);
+    /* console.log(fsStore); */
 
     if (grow) {
         fsStore = fsStore + 1;
@@ -700,7 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
         postDiv.innerHTML = `
             
             <p class="post-date">Posted by ${title} on: ${date}</p>
-            <p>${content}</p>
+            <p class="post-content">${content}</p>
         `;
 
         blogPostsDiv.prepend(postDiv);
