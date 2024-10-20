@@ -2,15 +2,15 @@
 
 /* Champion details */
 
-let uBolt = new champDetail("Athletics", "Usain", "Bolt", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 1022);
-let nLyles = new champDetail("Athletics", "Noah", "Lyles", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 224);
-let gHolloway = new champDetail("Athletics", "Grant", "Holloway", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 421);
-let lJames = new champDetail("Basketball", "Lebron", "James", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 878);
-let mJordan = new champDetail("Basketball", "Michael", "Jordan", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 927);
-let kAbdulJabbar = new champDetail("Basketball", "Kareem", "Abdul-Jabbar", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 344);
-let mPhelps = new champDetail("Swimming", "Michael", "Phelps", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 943);
-let mSpitz = new champDetail("Swimming", "Mark", "Spitz", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 647);
-let iThorpe = new champDetail("Swimming", "Ian", "Thorpe", ["2014", "2015", "2016", "2017"], ["2 O G, 1 W C", "3 O G", "2 O G, 1 W C", "1 W C"], 336);
+let uBolt = new champDetail("Athletics", "Usain", "Bolt", ["2008", "2009", "2012", "2016"], ["2 Olympic Gold", "2 World Championship Gold", "3 Olympic Gold", "3 Olympic Gold"], 1022);
+let nLyles = new champDetail("Athletics", "Noah", "Lyles", ["2019", "2022", "2023", "2024"], ["1 World Championship Gold", "1 World Championship Gold", "3 1 World Championship Gold", "1 Olympic Gold"], 224);
+let gHolloway = new champDetail("Athletics", "Grant", "Holloway", ["2019", "2022", "2023", "2024"], ["1 World Championship Gold", "1 World Championship Gold", "1 World Championship Gold", "1 Olympic Gold"], 421);
+let lJames = new champDetail("Basketball", "Lebron", "James", ["2012", "2013", "2016", "2020"], ["NBA Champion, Finals MVP", "NBA Champion, Finals MVP", "NBA Champion, Finals MVP", "NBA Champion, Finals MVP"], 878);
+let mJordan = new champDetail("Basketball", "Michael", "Jordan", ["1993", "1996", "1997", "1998"], ["NBA Champion, Finals MVP", "NBA Champion, Finals MVP", "NBA Champion, Finals MVP", "NBA Champion, Finals MVP"], 927);
+let kAbdulJabbar = new champDetail("Basketball", "Kareem", "Abdul-Jabbar", ["1971", "1980", "1985", "1987"], ["NBA Champion, Finals MVP", "NBA Champion, NBA MVP", "NBA Champion, Finals MVP", "NBA Champion"], 344);
+let mPhelps = new champDetail("Swimming", "Michael", "Phelps", ["2004", "2008", "2012", "2016"], ["7 Olympic Gold", "8 Olympic Gold", "4 Olympic Gold", "5 Olympic Gold"], 943);
+let mSpitz = new champDetail("Swimming", "Mark", "Spitz", ["1965", "1967", "1968", "1972"], ["Maccabiah Games 5 Gold", "Pan Am Games 5 Gold", "2 Olympic Gold", "7 Olympic Gold"], 647);
+let iThorpe = new champDetail("Swimming", "Ian", "Thorpe", ["1998", "2000", "2001", "2004"], ["2 World Championship Gold", "3 Olympic Gold", "6 World Championship Gold", "3 Olympic Gold"], 336);
 
 /* Function to store champion details */
 
@@ -36,7 +36,9 @@ let modal = document.getElementById("signUp");
 let champDrop = document.getElementById('select-champion');
 
 window.onclick = function (event) {
+
     if (event.target == modal) {
+
         modal.style.display = "none";
 
         //Resume Champion Board random display
@@ -178,6 +180,29 @@ function showModal() {
 
 }
 
+/* Code to check input typed in sign up form */
+
+myForm = document.querySelector(".signUpForm");
+firstPW = document.getElementById("pw");
+secondPW = document.getElementById("pwCheck");
+
+function ValidateForm() {
+
+    if (firstPW.value !== secondPW.value) {
+        alert("Passwords do not match");
+        return (false);
+    }
+
+    alert("func ran");
+
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.email.value))  
+    {
+        return (true);
+    }
+    alert("Invalid Email");  
+    return (false);
+}
+
 // Dropdown control //
 
 /* Function to determine which sport is selected & display champion dropdown with matching champions*/
@@ -293,9 +318,9 @@ window.addEventListener("load", (event) => {
     fontS = document.getElementById("champion-name-sport").style.fontSize;
     modSize = parseInt(fontS);
     document.getElementById("champion-name-sport").style.top = posTop;
-    //modTop = parseInt(posTop);
     document.getElementById("champion-name-sport").style.left = posLeft;
-    //modLeft = parseInt(posLeft);
+
+    /* Media query to place champion names according to screen size */
 
     if (window.matchMedia("(max-width: 900px)").matches) {
 
@@ -322,7 +347,7 @@ window.addEventListener("load", (event) => {
 
     if (window.matchMedia("(max-width: 850px)").matches) {
 
-        txtSize = 25;
+        txtSize = 20;
         txtGrowDelay = 100;
         ch1PosTop = "50px";
         ch1PosLeft = "-50px";
@@ -374,6 +399,8 @@ window.addEventListener("load", (event) => {
 
   }
 
+/* Function to make Champions Board text grow and shrink */
+
   function txtGrow (fsStore) {
 
       console.log(txtSize);
@@ -388,7 +415,6 @@ window.addEventListener("load", (event) => {
             document.getElementById("champion-name-sport").style.fontSize = fsStore + "pt";
         }
         else {
-            /* window.setTimeout(5000); */
             grow = false;
         }
     } else {
@@ -406,6 +432,8 @@ window.addEventListener("load", (event) => {
     window.setTimeout(txtGrow, txtGrowDelay, fsStore);
     
   }
+
+  /* Function to randomly change champion displayed on champions board */
 
   function changeChamp () {
 
@@ -556,7 +584,7 @@ switch (champ) {
     break;
 
     case "25":
-        person = "Kareem Abdul-Jabbar";
+        person = "Kareem Ab-Jabbar";
         selection = true;
         popS2S3(person, kAbdulJabbar);
     break;
@@ -674,6 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         blogPostsDiv.prepend(postDiv);
+        
     }
 
     /* Form submission */
@@ -690,6 +719,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /* Reset the form fields */
         postForm.reset();
+
+        document.getElementById("post-section").style.display = "none";
 
     });
 

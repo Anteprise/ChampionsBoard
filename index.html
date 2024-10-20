@@ -182,7 +182,7 @@
 
       <span class="shutModal" title="Close Modal" onclick="document.getElementById('signUp').style.display='none'">&times;</span>
 
-      <form class="signUpForm">
+      <form class="signUpForm" onsubmit='return ValidateForm();'>
         <div class="formSection">
 
           <p class="bigHead">Sign Up</p>
@@ -315,7 +315,7 @@
 
     <!-- Users blog - comments about various champions -->
 
-    <section class="post-section">
+    <section id="post-section">
 
       <p>Add your post here</p>
 
@@ -326,7 +326,7 @@
           <input type="text" id="username" name="username" required>
 
           <label for="comment">Your Comment:</label>
-          <textarea id="comment" name="comment" required></textarea>
+          <textarea type="text" id="comment" name="comment" required></textarea>
 
           <button type="submit">Post Comment</button>
       </form>
@@ -335,7 +335,7 @@
 
     <section class="champion-user-blog">
 
-      <button type="button" class="postBtn" id="postMore">Add Your Post</button>
+      <button type="button" class="postBtn" id="postMore" onclick="document.getElementById('post-section').style.display='block'">Add Your Post</button>
 
         <div class="blog-shape">
           <section id="blog-posts">

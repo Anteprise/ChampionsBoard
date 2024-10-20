@@ -257,20 +257,8 @@ input[type=text], input[type=password] {
 
 input[type=text]:focus, input[type=password]:focus {
     outline: none;
-    background: #666161;
+    background: lightgrey;
 }
-
-/* button {
-    cursor: pointer;
-    border: none;
-    width: 100%;
-    padding: 10px 15px;
-    margin: 10px 30px;
-    opacity: 0.8;
-    color: white;
-    background: #51b993;
-    border-radius: 5px;
-} */
 
 .cnclButton, .suButton {
     cursor: pointer;
@@ -491,10 +479,20 @@ table {
 
 /* Styling for the post form */
 
-.post-section p {
+#post-section p {
     font-weight: bold;
     font-size: 18px;
     padding-bottom: 1rem;
+}
+
+textarea[type=text] {
+    width: 95%;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    border: none;
+    background: #e2e2e2;
+    display: inline-block;
+    border-radius: 5px;
 }
 
 #post-form {
@@ -523,15 +521,17 @@ table {
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 #post-form button:hover {
     background-color: #555;
 }
 
-.post-section {
+#post-section {
     margin: 10px auto;
     padding: 15px;
+    display: none;
     width: 70%;
     height: 280px;
     border-radius: 10px;
@@ -662,6 +662,7 @@ footer {
 }
 
 @media (max-width: 950px) {
+
     .champions-board-heading {
         transform: scaleX(1.2) scaleY(1.2);
         width: 300px;
@@ -669,14 +670,15 @@ footer {
     .champion-board-links a {
         font-size: 14px;
     }
+
+    .votesTable {
+        width: 80%;
+    }
+
 }
 
 
 @media (max-width: 850px) {
-
-    main {
-        /* height: fit-content; */
-    }
 
     /*   Heading & navigation   */
 
@@ -686,6 +688,17 @@ footer {
         display: flex;
         flex-direction: column;
         border: 3px solid black;
+    }
+
+    /* Voting Form */
+
+    .votingForm {
+        margin: 15px;
+        width: 80%;
+    }
+
+    .votesTable {
+        width: 80%;
     }
 
     .champions-board-heading {
@@ -820,6 +833,35 @@ footer {
         height: auto;
     }
 
+    /* Leader Board */
+
+    .votesTable {
+        width: 80%;
+    }
+
+    .shutLeaders {
+        top: 10px;
+        right: 10px;
+    }
+
+    /* Voting Form */
+
+    .votingForm {
+        width: 80%;
+    }
+
+    /* Sign Up modal */
+
+    input[type=text], input[type=password] {
+        width: 90%;
+        padding: 15px;
+        margin: 5px 0 20px 0;
+    }
+
+    .cnclButton, .suButton {    
+        width: 50%;
+        margin: 5px;
+    }
     
     /*   Section 1 Champions Board   */
 
@@ -880,6 +922,52 @@ footer {
         transform: scaleX(1.0) scaleY(1.0);
     }
 
+    /* Leader Board */
+
+    .leaders {
+        width: 100%;
+    }
+
+    .votesTable {
+        width: 70%;
+    }
+
+    /* Voting modal */
+
+    .shutVoting {
+        top: 5px;
+        right: 5px;
+    }
+
+    .votingForm {
+        margin: 15px;
+        width: 80%;
+    }
+
+    .cancelBtn, .submitBtn {
+        padding: 10px 15px;
+        margin: 10px 5px;
+    }
+
+    input[type="radio"] {
+        margin-right: 20px;
+    }
+
+    /*    Sign Up Modal    */
+
+    input[type=text], input[type=password] {
+        width: 85%;
+        padding: 15px;
+        margin: 5px 0 20px 0;
+    }
+
+    .cnclButton, .suButton {    
+        width: 50%;
+    }
+
+    .cnclButton {
+        background: red;
+    }
     
     /*   Section 1 Champions Board   */
 
