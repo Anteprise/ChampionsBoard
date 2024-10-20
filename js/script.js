@@ -43,15 +43,17 @@ window.onclick = function (event) {
         selection = false;  //Resume Champion Board random display
         document.querySelector(".champions-giphys").style.display = "none";
         document.querySelector(".champion-achievements-table").style.display = "none";
+        document.getElementById('post-section').style.display = "none";
         champDrop.style.display = "none";
 
     } else if (event.target == theLeaders) {
-        
+
         theLeaders.style.display = "none";
 
         selection = false;  //Resume Champion Board random display
         document.querySelector(".champions-giphys").style.display = "none";
         document.querySelector(".champion-achievements-table").style.display = "none";
+        document.getElementById('post-section').style.display = "none";
         champDrop.style.display = "none";
 
     } else if (event.target == toVote) {
@@ -61,6 +63,7 @@ window.onclick = function (event) {
         selection = false;  //Resume Champion Board random display
         document.querySelector(".champions-giphys").style.display = "none";
         document.querySelector(".champion-achievements-table").style.display = "none";
+        document.getElementById('post-section').style.display = "none";
         champDrop.style.display = "none";
     }
     
@@ -167,6 +170,7 @@ function resumeChampBoard () {
     selection = false;
     document.querySelector(".champions-giphys").style.display = "none";
     document.querySelector(".champion-achievements-table").style.display = "none";
+    document.getElementById('post-section').style.display = "none";
     champDrop.style.display = "none";
 
 }
