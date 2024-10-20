@@ -1,4 +1,3 @@
-//console.log("Pretty Mary");
 
 /* Champion details */
 
@@ -41,24 +40,20 @@ window.onclick = function (event) {
 
         modal.style.display = "none";
 
-        //Resume Champion Board random display
-        selection = false;
+        selection = false;  //Resume Champion Board random display
         champDrop.style.display = "none";
-        //champBoardControl();
+
     } else if (event.target == theLeaders) {
         theLeaders.style.display = "none";
 
-        //Resume Champion Board random display
-        selection = false;
+        selection = false;  //Resume Champion Board random display
         champDrop.style.display = "none";
-        //champBoardControl();
+
     } else if (event.target == toVote) {
         toVote.style.display = "none";
 
-        //Resume Champion Board random display
-        selection = false;
+        selection = false;  //Resume Champion Board random display
         champDrop.style.display = "none";
-        //champBoardControl();
     }
     
 }
@@ -117,13 +112,10 @@ function getFormChecked(event) {
 
     event.preventDefault();
 
-    //alert(uBolt.totalVotes);
-
     radios = document.getElementsByName('fav_champion');
-    //alert(radios.length);
+    
     if (radios[0].checked) {
         uBolt.totalVotes = uBolt.totalVotes + 1;
-        //alert(uBolt.totalVotes);
     } else if (radios[1].checked) {
         nLyles.totalVotes = nLyles.totalVotes + 1;
     } else if (radios[2].checked) {
@@ -162,7 +154,8 @@ document.querySelector(".shutModal").addEventListener("click", resumeChampBoard)
 
 function resumeChampBoard () {
 
-    //Resume Champion Board random display
+    /* Resume Champion Board random display */
+
     selection = false;
     champDrop.style.display = "none";
 
@@ -296,6 +289,8 @@ let ch8PosTop = "150px";
 let ch8PosLeft = "100px";
 let ch9PosTop = "120px";
 let ch9PosLeft = "120px";
+
+/* Once the page is loaded start the random champions board display */
 
 window.addEventListener("load", (event) => {
 
@@ -534,6 +529,8 @@ function populateS2S3(champ) {
     let elementExists2 = document.querySelector(".giphy-display-2 img");
     let elementExists3 = document.querySelector(".giphy-display-3 img");
 
+    /* Remove the previous Giphy images when the champion is changed */
+
     if (elementExists1 !== null) {
         elementExists1.remove();
     }
@@ -636,6 +633,8 @@ async function getGiphys(sportsman){
 
           image.setAttribute('src', addresses);
 
+          /* Append Giphy to each of the 3 giphy boxes */
+
           if (i === 0) {
             giphy1.appendChild(image);
           }
@@ -680,6 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const blogPostsDiv = document.getElementById('posts-list');
 
     /* Function to get the current date */
+
     function getFormattedDate() {
         const date = new Date();
         const day = String(date.getDate()).padStart(2, '0');
@@ -691,6 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* Function to create a new post and add it to the top of the blog */
+
     function addNewPost(title, content, date) {
         const postDiv = document.createElement('div');
         postDiv.classList.add('blog-post');
@@ -706,6 +707,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* Form submission */
+
     postForm.addEventListener('submit', (event) => {
 
         event.preventDefault();
@@ -715,9 +717,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const date = getFormattedDate();
 
         /* Add the new post to the top */
+
         addNewPost(title, content, date);
 
         /* Reset the form fields */
+
         postForm.reset();
 
         document.getElementById("post-section").style.display = "none";
@@ -771,6 +775,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* Load new posts when button is clicked */
+
     const loadMoreButton = document.getElementById("loadMore");
     loadMoreButton.addEventListener('click', loadMorePosts);
 
