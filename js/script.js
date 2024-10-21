@@ -317,7 +317,7 @@ window.addEventListener("load", (event) => {
 
   });
 
-  /* Set Champion Board font size and position when the window is resized */
+  /* Set Champion Board font size and position if a champion is selected when the window is resized */
 
  window.addEventListener('resize', function(event) {
 
