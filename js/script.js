@@ -322,8 +322,7 @@ window.addEventListener("load", (event) => {
  window.addEventListener('resize', function(event) {
 
     //If random display is not running
-    console.log("fun ran");
-    console.log(selection);
+    
     if (selection) {
     
     if (window.matchMedia("(max-width: 1100px)").matches) {
@@ -331,7 +330,6 @@ window.addEventListener("load", (event) => {
         txtSize = 30;
         posTop = "100px";
         posLeft = "-40px";
-        console.log(posLeft);
 
         document.getElementById("champion-name-sport").style.fontSize = txtSize + "pt";
         document.getElementById("champion-name-sport").style.top = posTop;
@@ -342,7 +340,6 @@ window.addEventListener("load", (event) => {
         txtSize = 50;
         posTop = "70px";
         posLeft = "-50px";
-        console.log(posLeft);
 
         document.getElementById("champion-name-sport").style.fontSize = txtSize + "pt";
         document.getElementById("champion-name-sport").style.top = posTop;
@@ -355,7 +352,6 @@ window.addEventListener("load", (event) => {
         txtSize = 25;
         posTop = "50px";
         posLeft = "10px";
-        console.log(posLeft);
 
         document.getElementById("champion-name-sport").style.fontSize = txtSize + "pt";
         document.getElementById("champion-name-sport").style.top = posTop;
@@ -365,6 +361,8 @@ window.addEventListener("load", (event) => {
 
     }
 });
+
+  /* Function to start the champion board random display */
 
   function fontControl () {
 
