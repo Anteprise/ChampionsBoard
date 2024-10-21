@@ -317,6 +317,55 @@ window.addEventListener("load", (event) => {
 
   });
 
+  /* Set Champion Board font size and position when the window is resized */
+
+ window.addEventListener('resize', function(event) {
+
+    //If random display is not running
+    console.log("fun ran");
+    console.log(selection);
+    if (selection) {
+    
+    if (window.matchMedia("(max-width: 1100px)").matches) {
+
+        txtSize = 30;
+        posTop = "100px";
+        posLeft = "-40px";
+        console.log(posLeft);
+
+        document.getElementById("champion-name-sport").style.fontSize = txtSize + "pt";
+        document.getElementById("champion-name-sport").style.top = posTop;
+        document.getElementById("champion-name-sport").style.left = posLeft;
+
+    } else {
+
+        txtSize = 50;
+        posTop = "70px";
+        posLeft = "-50px";
+        console.log(posLeft);
+
+        document.getElementById("champion-name-sport").style.fontSize = txtSize + "pt";
+        document.getElementById("champion-name-sport").style.top = posTop;
+        document.getElementById("champion-name-sport").style.left = posLeft;
+
+    }
+    
+    if (window.matchMedia("(max-width: 850px)").matches) {
+
+        txtSize = 25;
+        posTop = "50px";
+        posLeft = "10px";
+        console.log(posLeft);
+
+        document.getElementById("champion-name-sport").style.fontSize = txtSize + "pt";
+        document.getElementById("champion-name-sport").style.top = posTop;
+        document.getElementById("champion-name-sport").style.left = posLeft;
+
+    }
+
+    }
+});
+
   function fontControl () {
 
     document.getElementById("champion-name").innerHTML = champOnBoard;
@@ -329,7 +378,7 @@ window.addEventListener("load", (event) => {
 
     /* Media query to place champion names according to screen size */
 
-    if (window.matchMedia("(max-width: 900px)").matches) {
+    if (window.matchMedia("(max-width: 1050px)").matches) {
 
         txtSize = 30;
         txtGrowDelay = 100;
